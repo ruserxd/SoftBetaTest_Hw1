@@ -1,0 +1,108 @@
+{
+  "American League": {
+    "East": [
+      {
+        "team": "Baltimore Orioles",
+        "wins": 101,
+        "losses": 61
+      }
+    ],
+    "Central": [
+      {
+        "team": "Minnesota Twins",
+        "wins": 87,
+        "losses": 75
+      }
+    ],
+    "West": [
+      {
+        "team": "Houston Astros",
+        "wins": 91,
+        "losses": 71
+      }
+    ]
+  },
+  "National League": {
+    "East": [
+      {
+        "team": "Atlanta Braves",
+        "wins": 104,
+        "losses": 58
+      },
+      {
+        "team": "Philadelphia Phillies",
+        "wins": 90,
+        "losses": 72
+      },
+      {
+        "team": "Miami Marlins",
+        "wins": 84,
+        "losses": 78
+      },
+      {
+        "team": "New York Mets",
+        "wins": 75,
+        "losses": 87
+      },
+      {
+        "team": "Washington Nationals",
+        "wins": 71,
+        "losses": 91
+      }
+    ],
+    "Central": [
+      {
+        "team": "Milwaukee Brewers",
+        "wins": 92,
+        "losses": 70
+      },
+      {
+        "team": "Chicago Cubs",
+        "wins": 83,
+        "losses": 79
+      },
+      {
+        "team": "Cincinnati Reds",
+        "wins": 82,
+        "losses": 80
+      },
+      {
+        "team": "Pittsburgh Pirates",
+        "wins": 76,
+        "losses": 86
+      },
+      {
+        "team": "St. Louis Cardinals",
+        "wins": 71,
+        "losses": 91
+      }
+    ],
+    "West": [
+      {
+        "team": "Los Angeles Dodgers",
+        "wins": 100,
+        "losses": 62
+      },
+      {
+        "team": "Arizona Diamondbacks",
+        "wins": 84,
+        "losses": 78
+      },
+      {
+        "team": "San Diego Padres",
+        "wins": 82,
+        "losses": 80
+      },
+      {
+        "team": "San Francisco Giants",
+        "wins": 79,
+        "losses": 83
+      },
+      {
+        "team": "Colorado Rockies",
+        "wins": 59,
+        "losses": 103
+      }
+    ]
+  }
+}
