@@ -1,0 +1,8 @@
+2024-09-29 19:27:06  [ main:0 ] - [ ERROR ]  java.io.FileNotFoundException: src/main/resources/mlbTeamsJsonRecord/record_2023_forAssert.json (No such file or directory)
+2024-09-29 19:28:05  [ main:0 ] - [ ERROR ]  getData 發生 : java.io.FileNotFoundException: src/main/resources/mlbTeamsJsonRecord/record_2023_forAssert.json (No such file or directory)
+2024-09-29 19:54:59  [ main:14 ] - [ ERROR ]  Error processing file: src/main/resources/mlbTeamsJsonRecord/record_2023_forTryCatchFinally.json
+2024-09-29 19:54:59  [ main:17 ] - [ ERROR ]  Error message: League not found in JSON: National League
+2024-09-29 19:57:18  [ main:13 ] - [ ERROR ]  Error processing file: src/main/resources/mlbTeamsJsonRecord/record_2023_forTryCatchFinally.json
+2024-09-29 19:57:18  [ main:16 ] - [ ERROR ]  Error message: League not found in JSON: National League
+2024-09-29 19:58:13  [ main:11 ] - [ ERROR ]  Error processing file: src/main/resources/mlbTeamsJsonRecord/record_2023_forTryCatchFinally.json
+2024-09-29 19:58:13  [ main:17 ] - [ ERROR ]  Error message: League not found in JSON: National League
