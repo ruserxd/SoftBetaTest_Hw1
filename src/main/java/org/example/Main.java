@@ -5,7 +5,10 @@ import org.example.service.ShowMLBResult;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * 主要負責呼叫寫好的 Class */
 public class Main {
+
     public static ArrayList<String> paths = new ArrayList<>();
 
     public static void initial() {
@@ -26,11 +29,16 @@ public class Main {
         System.out.println("3. Original Version");
         System.out.print("請輸入選項 (1-3): ");
 
-        String input = scanner.nextLine();
+        int input = scanner.nextInt();
+
+        while (1 > input || 3 < input) {
+            System.out.println("請輸入在範圍內 (1-3):");
+            input = scanner.nextInt();
+        }
 
         switch (input) {
-            case "1", "2", "3" -> {
-                int index = Integer.parseInt(input) - 1;
+            case 1, 2, 3 -> {
+                int index = input - 1;
                 System.out.println("\n執行: " + paths.get(index));
                 showMLBResult.ShowMLBResult(paths.get(index));
             }
