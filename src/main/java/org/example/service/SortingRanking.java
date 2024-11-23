@@ -3,7 +3,10 @@ package org.example.service;
 import lombok.extern.slf4j.Slf4j;
 import org.example.model.TeamData;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 // 將資料 hashing 轉為該聯盟的排名 (每個區域的 No1) + 剩餘，以 ArrayList 作為排名順序
 @Slf4j
@@ -22,10 +25,10 @@ public class SortingRanking {
         HashMap<String, List<TeamData>> hashNationalLeague = getDataFromJSON.getHashNationalLeague();
 
         ArrayList<TeamData> americanLeague = rankingLeague(hashAmericanLeague);
-        log.info("成功獲取排序好的資料" + " american\n" + americanLeague);
+        log.info("成功獲取排序好的資料 american\n{}", americanLeague);
 
         ArrayList<TeamData> nationalLeague = rankingLeague(hashNationalLeague);
-        log.info("成功獲取排序好的資料" + " national\n" + nationalLeague);
+        log.info("成功獲取排序好的資料 national\n{}", nationalLeague);
 
         HashMap<String, ArrayList<TeamData>> mlbLeagueRanking = new HashMap<>();
         mlbLeagueRanking.put(leagues[0], americanLeague);
@@ -43,8 +46,7 @@ public class SortingRanking {
         ArrayList<TeamData> regionLoser = new ArrayList<>();
 
         // 將每個區域資料抓下，獲得第一名與其餘
-        for (Map.Entry<String, List<TeamData>> entry : hashLeague.entrySet())
-        {
+        for (Map.Entry<String, List<TeamData>> entry : hashLeague.entrySet()) {
             // 利用 winRate 進行排序
             entry.getValue().sort((a, b) -> Double.compare(b.winRate, a.winRate));
             List<TeamData> regionRank = entry.getValue();
@@ -65,7 +67,7 @@ public class SortingRanking {
         for (int i = 0; i < 3 && i < regionLoser.size(); i++)
             sortingLeague.add(regionLoser.get(i));
 
-        assert sortingLeague.size() == 6: "Need 6 teams for 本季季後賽，組別不夠打...";
+        assert sortingLeague.size() == 6 : "Need 6 teams for 本季季後賽，組別不夠打...";
         return sortingLeague;
     }
 }

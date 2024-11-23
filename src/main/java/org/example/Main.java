@@ -6,7 +6,8 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
- * 主要負責呼叫寫好的 Class */
+ * 主要負責呼叫寫好的 Class
+ */
 public class Main {
 
     public static ArrayList<String> paths = new ArrayList<>();

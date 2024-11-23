@@ -8,6 +8,14 @@
       </list>
     </option>
   </component>
+  <component name="PDMPlugin">
+    <option name="customRuleSets">
+      <list>
+        <option value="$PROJECT_DIR$/../CodeMangeSystem_ForNSTCproject/src/main/resources/pmd/rule1.xml" />
+      </list>
+    </option>
+    <option name="skipTestSources" value="false" />
+  </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_17" default="true" project-jdk-name="temurin-17" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />
   </component>

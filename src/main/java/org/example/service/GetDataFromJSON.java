@@ -2,16 +2,16 @@ package org.example.service;
 
 import lombok.extern.log4j.Log4j;
 import org.example.model.TeamData;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.*;
 
 
 // 負責將 Json 資料轉成 HashMap
@@ -73,11 +73,11 @@ public class GetDataFromJSON {
 
             // builder 簡潔創建 teamData
             TeamData teamData = TeamData.builder()
-                                        .teamName(team.get(teamOBJData[0]).toString())
-                                        .win((Long) team.get(teamOBJData[1]))
-                                        .lose((Long) team.get(teamOBJData[2]))
-                                        .build();
-            teamData.setWinRate((float)teamData.getWin()/((float)teamData.getWin() + (float)teamData.getLose()));
+                    .teamName(team.get(teamOBJData[0]).toString())
+                    .win((Long) team.get(teamOBJData[1]))
+                    .lose((Long) team.get(teamOBJData[2]))
+                    .build();
+            teamData.setWinRate((float) teamData.getWin() / ((float) teamData.getWin() + (float) teamData.getLose()));
             hashLeague.get(region).add(teamData);
 
             log.info("成功存入" + teamData);
@@ -87,7 +87,7 @@ public class GetDataFromJSON {
     // 初始化 HashMap
     private static HashMap<String, List<TeamData>> initialMap() {
         HashMap<String, List<TeamData>> hashLeague = new HashMap<>();
-        for (String region:regions)
+        for (String region : regions)
             hashLeague.put(region, new ArrayList<>());
 
         return hashLeague;
