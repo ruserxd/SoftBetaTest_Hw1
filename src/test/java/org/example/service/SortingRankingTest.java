@@ -17,12 +17,17 @@ class SortingRankingTest {
     private SortingRanking sortingRanking;
     private HashMap<String, List<TeamData>> testData;
 
-    @Test
-    @DisplayName("第一筆資料測試是否有符合規範(由大到小)")
-    void testRankingLeague() {
+    @BeforeEach
+    void initial() {
         sortingRanking = new SortingRanking();
         testData = new HashMap<>();
 
+        System.out.println("-------------------------");
+    }
+
+    @Test
+    @DisplayName("第一筆資料測試是否有符合規範(由大到小)")
+    void testRankingLeague() {
         // West區域
         List<TeamData> westTeams = new ArrayList<>();
         westTeams.add(TeamData.builder()
@@ -71,10 +76,10 @@ class SortingRankingTest {
         testData.put("West", westTeams);
         testData.put("Central", centralTeams);
         testData.put("East", eastTeams);
-        log.info("初始化資料 \n{}", testData);
+        log.info("資料 \n{}", testData);
 
         List<TeamData> result = sortingRanking.rankingLeague(testData);
-        log.info("結果 {}", result);
+        log.info("結果\n {}", result);
 
         // List 的結果必須為從大到小
         for (int i = 0; i < result.size()-1; i++) {
@@ -85,9 +90,8 @@ class SortingRankingTest {
     @Test
     @DisplayName("沒有資料是否會拋出例外")
     void noData() {
-        HashMap<String, List<TeamData>> hashLeague = new HashMap<>();
         AssertionError error = assertThrows(AssertionError.class, () ->
-                sortingRanking.rankingLeague(hashLeague));
+                sortingRanking.rankingLeague(testData));
         log.info("空 Map 獲得 error message: {}", error.getMessage());
         assertEquals("Need 6 teams for 本季季後賽，組別不夠打...", error.getMessage());
     }
