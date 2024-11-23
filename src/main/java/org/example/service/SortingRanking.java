@@ -38,7 +38,7 @@ public class SortingRanking {
     }
 
     // 會先找每個區域的第一名出來, 把它放到對應的 Winner, 其餘放到 loser, 接著在按規則做排序
-    private ArrayList<TeamData> rankingLeague(HashMap<String, List<TeamData>> hashLeague) {
+    ArrayList<TeamData> rankingLeague(HashMap<String, List<TeamData>> hashLeague) {
         // 第一名的隊伍
         ArrayList<TeamData> regionWinner = new ArrayList<>();
 
@@ -50,7 +50,7 @@ public class SortingRanking {
             // 利用 winRate 進行排序
             entry.getValue().sort((a, b) -> Double.compare(b.winRate, a.winRate));
             List<TeamData> regionRank = entry.getValue();
-            regionWinner.add(regionRank.get(0));
+            regionWinner.add(regionRank.getFirst());
 
             for (int i = 1; i < regionRank.size(); i++)
                 regionLoser.add(regionRank.get(i));
