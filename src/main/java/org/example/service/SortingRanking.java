@@ -15,7 +15,7 @@ public class SortingRanking {
     private static final String[] leagues = {"American League", "National League"};
 
     // 將從 Json 獲得的資料，做排序處理，並回傳 key : 聯盟, value : 排序好的隊伍，好以供應接下來的外卡、種子輸出
-    public HashMap<String, ArrayList<TeamData>> processJson(String filePath) {
+    public HashMap<String, List<TeamData>> processJson(String filePath) {
         // 先抓取資料
         GetDataFromJSON getDataFromJSON = new GetDataFromJSON();
         getDataFromJSON.getDataFromJsonFile(filePath);
@@ -24,13 +24,13 @@ public class SortingRanking {
         HashMap<String, List<TeamData>> hashAmericanLeague = getDataFromJSON.getHashAmericanLeague();
         HashMap<String, List<TeamData>> hashNationalLeague = getDataFromJSON.getHashNationalLeague();
 
-        ArrayList<TeamData> americanLeague = rankingLeague(hashAmericanLeague);
+        List<TeamData> americanLeague = rankingLeague(hashAmericanLeague);
         log.info("成功獲取排序好的資料 american\n{}", americanLeague);
 
-        ArrayList<TeamData> nationalLeague = rankingLeague(hashNationalLeague);
+        List<TeamData> nationalLeague = rankingLeague(hashNationalLeague);
         log.info("成功獲取排序好的資料 national\n{}", nationalLeague);
 
-        HashMap<String, ArrayList<TeamData>> mlbLeagueRanking = new HashMap<>();
+        HashMap<String, List<TeamData>> mlbLeagueRanking = new HashMap<>();
         mlbLeagueRanking.put(leagues[0], americanLeague);
         mlbLeagueRanking.put(leagues[1], nationalLeague);
 
@@ -38,12 +38,12 @@ public class SortingRanking {
     }
 
     // 會先找每個區域的第一名出來, 把它放到對應的 Winner, 其餘放到 loser, 接著在按規則做排序
-    ArrayList<TeamData> rankingLeague(HashMap<String, List<TeamData>> hashLeague) {
+    List<TeamData> rankingLeague(HashMap<String, List<TeamData>> hashLeague) {
         // 第一名的隊伍
-        ArrayList<TeamData> regionWinner = new ArrayList<>();
+        List<TeamData> regionWinner = new ArrayList<>();
 
         // 除了第一名的隊伍
-        ArrayList<TeamData> regionLoser = new ArrayList<>();
+        List<TeamData> regionLoser = new ArrayList<>();
 
         // 將每個區域資料抓下，獲得第一名與其餘
         for (Map.Entry<String, List<TeamData>> entry : hashLeague.entrySet()) {
@@ -60,7 +60,7 @@ public class SortingRanking {
         regionWinner.sort((a, b) -> Double.compare(b.winRate, a.winRate));
 
         // 我們最後會得到的結果
-        ArrayList<TeamData> sortingLeague = new ArrayList<>(regionWinner);
+        List<TeamData> sortingLeague = new ArrayList<>(regionWinner);
 
         // 利用 winRate 進行排序
         regionLoser.sort((a, b) -> Double.compare(b.winRate, a.winRate));

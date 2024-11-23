@@ -3,8 +3,8 @@ package org.example.service;
 import lombok.extern.slf4j.Slf4j;
 import org.example.model.TeamData;
 
-import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Slf4j
@@ -17,21 +17,21 @@ public class ShowMLBResult {
             SortingRanking sortingRanking = new SortingRanking();
 
             // 使用傳入的 filePath 參數
-            HashMap<String, ArrayList<TeamData>> wantData = sortingRanking.processJson(filePath);
-            for (Map.Entry<String, ArrayList<TeamData>> entry : wantData.entrySet()) {
+            HashMap<String, List<TeamData>> wantData = sortingRanking.processJson(filePath);
+            for (Map.Entry<String, List<TeamData>> entry : wantData.entrySet()) {
                 System.out.println(entry.getKey() + " " + entry.getValue());
             }
 
             showAmericanLeague(wantData.get(leagues[0]));
             showNationalLeague(wantData.get(leagues[1]));
         } catch (Exception e) {
-            log.error("Error processing file: " + filePath);
-            log.error("Error message: " + e.getMessage());
+            log.error("Error processing file: {}", filePath);
+            log.error("Error message: {}", e.getMessage());
             e.printStackTrace();
         }
     }
 
-    public static void showAmericanLeague(ArrayList<TeamData> americanLeagueRanking) {
+    public static void showAmericanLeague(List<TeamData> americanLeagueRanking) {
         System.out.println("(AMERICAN LEAGUE)\n");
 
         // 定義輸出格式
@@ -49,7 +49,7 @@ public class ShowMLBResult {
         System.out.printf("%55s\n", "---- ?");
     }
 
-    public static void showNationalLeague(ArrayList<TeamData> nationalLeagueRanking) {
+    public static void showNationalLeague(List<TeamData> nationalLeagueRanking) {
         // 定義輸出格式
         String format = "%25s %-2d %-6s%-17s\n";
         String continueFormat = "%33s %-2d %-6s%-17s\n";

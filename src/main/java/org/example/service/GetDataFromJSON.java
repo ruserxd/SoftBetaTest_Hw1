@@ -1,5 +1,6 @@
 package org.example.service;
 
+import lombok.Getter;
 import lombok.extern.log4j.Log4j;
 import org.example.model.TeamData;
 import org.json.simple.JSONArray;
@@ -15,6 +16,7 @@ import java.util.List;
 
 
 // 負責將 Json 資料轉成 HashMap
+@Getter
 @Log4j
 public class GetDataFromJSON {
     // final 意味著以下資料不能進行新增
@@ -27,7 +29,7 @@ public class GetDataFromJSON {
     // Team 內的資料
     private static final String[] teamOBJData = {"team", "wins", "losses"};
 
-
+    // 獲取兩個聯盟的資料
     // 分兩個聯盟的 map ，因為兩者的關聯性對於此次作業並不大
     // Key: 西,中,東
     // Value: 各隊的 TeamData
@@ -91,15 +93,5 @@ public class GetDataFromJSON {
             hashLeague.put(region, new ArrayList<>());
 
         return hashLeague;
-    }
-
-
-    // 獲取兩個聯盟的資料
-    public HashMap<String, List<TeamData>> getHashAmericanLeague() {
-        return hashAmericanLeague;
-    }
-
-    public HashMap<String, List<TeamData>> getHashNationalLeague() {
-        return hashNationalLeague;
     }
 }
