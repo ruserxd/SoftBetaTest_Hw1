@@ -82,8 +82,8 @@ class SortingRankingTest {
         log.info("結果\n {}", result);
 
         // List 的結果必須為從大到小
-        for (int i = 0; i < result.size()-1; i++) {
-            assertTrue(result.get(i).winRate > result.get(i+1).winRate);
+        for (int i = 0; i < result.size() - 1; i++) {
+            assertTrue(result.get(i).winRate > result.get(i + 1).winRate);
         }
     }
 

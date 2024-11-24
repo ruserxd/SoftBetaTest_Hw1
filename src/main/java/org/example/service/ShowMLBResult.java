@@ -25,9 +25,9 @@ public class ShowMLBResult {
             showAmericanLeague(wantData.get(leagues[0]));
             showNationalLeague(wantData.get(leagues[1]));
         } catch (Exception e) {
-            log.error("Error processing file: {}", filePath);
-            log.error("Error message: {}", e.getMessage());
-            e.printStackTrace();
+            throw new RuntimeException(e.getMessage(), e);
+        } finally {
+            log.info("Ending");
         }
     }
 

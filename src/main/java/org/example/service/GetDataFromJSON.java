@@ -13,6 +13,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 // 負責將 Json 資料轉成 HashMap
@@ -36,13 +37,17 @@ public class GetDataFromJSON {
     private final HashMap<String, List<TeamData>> hashAmericanLeague = initialMap();
     private final HashMap<String, List<TeamData>> hashNationalLeague = initialMap();
 
+    private final Map<String, HashMap<String, List<TeamData>>> leagueToHashMap = Map.of(
+            leagues[0], hashAmericanLeague,
+            leagues[1], hashNationalLeague
+    );
+
     void getDataFromJsonFile(String filePath) {
         try {
             Object ob = new JSONParser().parse(new FileReader(filePath));
             JSONObject js = (JSONObject) ob;
 
             for (String league : leagues) {
-
                 // 這個聯盟的 Json 物件
                 JSONObject leagueJson = (JSONObject) js.get(league);
 
@@ -51,19 +56,22 @@ public class GetDataFromJSON {
                     throw new IllegalArgumentException("League not found in JSON: " + league);
                 }
 
+                // 使用 Map 來取代 if-else
                 for (String region : regions) {
-                    if (league.equals(leagues[0]))
-                        getRegionsData(leagueJson, region, hashAmericanLeague);
-                    else if (league.equals(leagues[1]))
-                        getRegionsData(leagueJson, region, hashNationalLeague);
+                    getRegionsData(leagueJson, region, leagueToHashMap.get(league));
                 }
             }
-        } catch (IOException | ParseException e) {
-            log.error("getData 發生 : " + e);
+        } catch (IOException e) {
+            log.error("讀取檔案時發生錯誤: ", e);
+            throw new RuntimeException("無法讀取檔案: " + e.getMessage());
+        } catch (ParseException e) {
+            log.error("JSON解析錯誤: ", e);
+            throw new RuntimeException("JSON解析錯誤: " + e.getMessage());
         } finally {
             log.info("抓取 Json 結束");
         }
     }
+
 
     // 獲得該區域的資料
     private void getRegionsData(JSONObject jsonLeague, String region, HashMap<String, List<TeamData>> hashLeague) {

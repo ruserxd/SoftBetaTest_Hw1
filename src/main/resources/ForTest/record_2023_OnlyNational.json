@@ -1,0 +1,85 @@
+{
+  "National League": {
+    "East": [
+      {
+        "team": "Baltimore Orioles",
+        "wins": 101,
+        "losses": 61
+      },
+      {
+        "team": "Tampa Bay Rays",
+        "wins": 99,
+        "losses": 63
+      },
+      {
+        "team": "Toronto Blue Jays",
+        "wins": 89,
+        "losses": 73
+      },
+      {
+        "team": "New York Yankees",
+        "wins": 82,
+        "losses": 80
+      },
+      {
+        "team": "Boston Red Sox",
+        "wins": 78,
+        "losses": 84
+      }
+    ],
+    "Central": [
+      {
+        "team": "Minnesota Twins",
+        "wins": 87,
+        "losses": 75
+      },
+      {
+        "team": "Detroit Tigers",
+        "wins": 78,
+        "losses": 84
+      },
+      {
+        "team": "Cleveland Guardians",
+        "wins": 76,
+        "losses": 86
+      },
+      {
+        "team": "Chicago White Sox",
+        "wins": 61,
+        "losses": 101
+      },
+      {
+        "team": "Kansas City Royals",
+        "wins": 56,
+        "losses": 106
+      }
+    ],
+    "West": [
+      {
+        "team": "Houston Astros",
+        "wins": 91,
+        "losses": 71
+      },
+      {
+        "team": "Texas Rangers",
+        "wins": 89,
+        "losses": 73
+      },
+      {
+        "team": "Seattle Mariners",
+        "wins": 88,
+        "losses": 74
+      },
+      {
+        "team": "Los Angeles Angels",
+        "wins": 73,
+        "losses": 89
+      },
+      {
+        "team": "Oakland Athletics",
+        "wins": 50,
+        "losses": 112
+      }
+    ]
+  }
+}
