@@ -7,6 +7,7 @@ import java.util.Scanner;
 
 /**
  * 主要負責呼叫寫好的 Class
+ * testNewBranch
  */
 public class Main {
 
